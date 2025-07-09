@@ -1,0 +1,36 @@
+ {
+    "footer":{
+      "title": "Emaar",
+      "description": "An initiative to document the achievements of restoring Syrian mosques and showcase projects in need of funding.",
+      "quick_links": "Quick Links",
+      "projects_overview": "Projects Overview",
+      "projects_study": "Projects Under Study",
+      "projects_execution": "Projects Under Execution",
+      "projects_completed": "Completed Projects",
+      "contact_us": "Contact Us",
+      "ministry_awqaf": "Ministry of Awqaf",
+      "address": "Damascus, Syria",
+      "email": "eng-requests@awqaf.gov.sy",
+      "copyright": "© 2025 Syrian Mosques Restoration Initiative. All rights reserved."
+    }
+    ,
+    "hero":{
+      "title": "Reviving Syria’s heritage, one mosque at a time",
+      "description": "An initiative to document the restoration of Syrian mosques, display projects in need of funding, and receive supporter contributions.",
+      "viewProjects": "View Projects",
+      "bePartner": "Become a Partner"
+    },
+    
+    "navbar":{
+      "home": "Home",
+      "projects": "Projects",
+      "partners": "Partners",
+      "about": "About",
+      "contact": "Contact",
+      "login": "Login",
+      "bePartner": "Be a Partner",
+      "emmar": "Emaar"
+
+    }    
+  }
+  
