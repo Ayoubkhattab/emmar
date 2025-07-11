@@ -3,7 +3,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 // استيراد ملفات الترجمة
-import ar from "../public/locales//ar/common.json";
+import ar from "../public/locales/ar/common.json";
 import en from "../public/locales/en/common.json";
 
 if (!i18n.isInitialized) {
