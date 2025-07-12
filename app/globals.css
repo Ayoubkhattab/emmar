@@ -2,7 +2,12 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
+body {
+  background: var(--background);
+  color: var(--foreground);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 :root {
   --green-primary: #0a6847;
   --gold-primary: #eec759;
@@ -195,4 +200,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+html {
+  transition: background-color 0.3s ease;
+}
+
+/* أثناء تغيير الثيم، يمكن تعطيل الانتقالات مؤقتًا */
+html[data-theme-changing] {
+  transition: none !important;
 }
