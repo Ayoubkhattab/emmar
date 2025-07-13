@@ -22,28 +22,24 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a
+                href="/projects?status=under_study"
+                className="hover:underline"
+              >
                 مشاريع قيد الدراسة
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a
+                href="/projects?status=in_execution"
+                className="hover:underline"
+              >
                 مشاريع قيد التنفيذ
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="/projects?status=completed" className="hover:underline">
                 مشاريع مكتملة
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:underline">
-                تواصل معنا
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                وزارة الأوقاف
               </a>
             </li>
           </ul>

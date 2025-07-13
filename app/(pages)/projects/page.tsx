@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { MosqueCard } from "@/components/MousqeCards/MosqueCard";
-import { useState } from "react";
 import { mosques as allMosques } from "@/lib/data";
 
 const statuses = [
@@ -31,11 +32,35 @@ const sectors = [
 ];
 
 export default function ProjectsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [status, setStatus] = useState("");
   const [governorate, setGovernorate] = useState("");
   const [district, setDistrict] = useState("");
   const [sector, setSector] = useState("");
+
+  // دالة لتحديث الرابط
+  const updateQuery = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      params.set(key, value);
+    } else {
+      params.delete(key);
+    }
+
+    router.push(`/projects?${params.toString()}`);
+  };
+
+  // جلب الفلاتر من الرابط عند التحميل
+  useEffect(() => {
+    setStatus(searchParams.get("status") || "");
+    setGovernorate(searchParams.get("governorate") || "");
+    setDistrict(searchParams.get("district") || "");
+    setSector(searchParams.get("sector") || "");
+  }, []);
 
   const filteredMosques = allMosques.filter((m) => {
     return (
@@ -67,7 +92,11 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 flex-1">
           <select
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setStatus(value);
+              updateQuery("status", value);
+            }}
             className="p-2 border border-gray-300 rounded"
           >
             {statuses.map(({ value, label }) => (
@@ -79,7 +108,11 @@ export default function ProjectsPage() {
 
           <select
             value={governorate}
-            onChange={(e) => setGovernorate(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setGovernorate(value);
+              updateQuery("governorate", value);
+            }}
             className="p-2 border border-gray-300 rounded"
           >
             {governorates.map(({ value, label }) => (
@@ -91,7 +124,11 @@ export default function ProjectsPage() {
 
           <select
             value={district}
-            onChange={(e) => setDistrict(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setDistrict(value);
+              updateQuery("district", value);
+            }}
             className="p-2 border border-gray-300 rounded"
           >
             {districts.map(({ value, label }) => (
@@ -103,7 +140,11 @@ export default function ProjectsPage() {
 
           <select
             value={sector}
-            onChange={(e) => setSector(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value;
+              setSector(value);
+              updateQuery("sector", value);
+            }}
             className="p-2 border border-gray-300 rounded"
           >
             {sectors.map(({ value, label }) => (
