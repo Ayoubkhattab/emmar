@@ -6,11 +6,13 @@ import { mosques } from "@/lib/data";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // عدل المسار حسب مشروعك
 import { ProjectRequestSheet } from "@/components/projectRequest/projectRequestSheet";
 
-interface ProjectDetailsProps {
-  params: { id: string };
+interface Props {
+  params: {
+    id: string;
+  };
 }
 
-export default function ProjectDetails({ params }: ProjectDetailsProps) {
+export default function ProjectDetails({ params }: Props) {
   const mosque = mosques.find((m) => m.id === Number(params.id));
   if (!mosque) return notFound();
 
