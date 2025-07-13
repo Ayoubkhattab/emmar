@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
 
 interface ContactFormData {
   name: string;
@@ -21,6 +22,8 @@ interface ContactFormData {
 }
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -30,8 +33,9 @@ export default function Contact() {
   } = useForm<ContactFormData>();
 
   const onSubmit = (data: ContactFormData) => {
-    alert("✅ تم إرسال طلبك بنجاح!");
-    reset();
+    // هنا يمكنك إضافة إرسال البيانات للسيرفر إذا أردت
+    setSubmitted(true); // لتظهر رسالة النجاح
+    reset(); // تفرغ الحقول
   };
 
   return (
@@ -50,101 +54,110 @@ export default function Contact() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-6">
-          <div className="grid gap-2">
-            <Label htmlFor="name">الاسم *</Label>
-            <Input
-              id="name"
-              {...register("name", { required: "الاسم مطلوب" })}
-              placeholder="أدخل اسمك الكامل"
-            />
-            {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
-            )}
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="agency">الجهة</Label>
-            <Controller
-              control={control}
-              name="agency"
-              render={({ field }) => (
-                <Select
-                  onValueChange={field.onChange}
-                  value={field.value}
-                  defaultValue=""
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="text-right" dir="rtl">
-                    <SelectGroup>
-                      <SelectItem value="charity">خيرية</SelectItem>
-                      <SelectItem value="government">حكومية</SelectItem>
-                      <SelectItem value="private">خاصة</SelectItem>
-                      <SelectItem value="other">أخرى</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
+        {!submitted ? (
+          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-y-6">
+            <div className="grid gap-2">
+              <Label htmlFor="name">الاسم *</Label>
+              <Input
+                id="name"
+                {...register("name", { required: "الاسم مطلوب" })}
+                placeholder="أدخل اسمك الكامل"
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name.message}</p>
               )}
-            />
-          </div>
+            </div>
 
-          <div className="grid gap-2">
-            <Label htmlFor="phone">رقم الهاتف</Label>
-            <Input
-              id="phone"
-              {...register("phone", {
-                pattern: {
-                  value: /^[0-9+\-\s]{8,15}$/,
-                  message: "رقم هاتف غير صالح",
-                },
-              })}
-              placeholder="أدخل رقم هاتفك"
-            />
-            {errors.phone && (
-              <p className="text-red-500 text-sm">{errors.phone.message}</p>
-            )}
-          </div>
+            <div className="grid gap-2">
+              <Label htmlFor="agency">الجهة</Label>
+              <Controller
+                control={control}
+                name="agency"
+                render={({ field }) => (
+                  <Select
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    defaultValue=""
+                  >
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="text-right" dir="rtl">
+                      <SelectGroup>
+                        <SelectItem value="charity">خيرية</SelectItem>
+                        <SelectItem value="government">حكومية</SelectItem>
+                        <SelectItem value="private">خاصة</SelectItem>
+                        <SelectItem value="other">أخرى</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
+            </div>
 
-          <div className="grid gap-2">
-            <Label htmlFor="email">البريد الإلكتروني *</Label>
-            <Input
-              id="email"
-              type="email"
-              {...register("email", {
-                required: "البريد الإلكتروني مطلوب",
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: "البريد الإلكتروني غير صالح",
-                },
-              })}
-              placeholder="example@email.com"
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm">{errors.email.message}</p>
-            )}
-          </div>
+            <div className="grid gap-2">
+              <Label htmlFor="phone">رقم الهاتف</Label>
+              <Input
+                id="phone"
+                {...register("phone", {
+                  pattern: {
+                    value: /^[0-9+\-\s]{8,15}$/,
+                    message: "رقم هاتف غير صالح",
+                  },
+                })}
+                placeholder="أدخل رقم هاتفك"
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm">{errors.phone.message}</p>
+              )}
+            </div>
 
-          <Button
-            type="submit"
-            className="bg-[var(--green-primary)] text-white"
-          >
-            إرسال الطلب
-          </Button>
-        </form>
+            <div className="grid gap-2">
+              <Label htmlFor="email">البريد الإلكتروني *</Label>
+              <Input
+                id="email"
+                type="email"
+                {...register("email", {
+                  required: "البريد الإلكتروني مطلوب",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "البريد الإلكتروني غير صالح",
+                  },
+                })}
+                placeholder="example@email.com"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email.message}</p>
+              )}
+            </div>
+
+            <Button
+              type="submit"
+              className="bg-[var(--green-primary)] text-white w-1/2"
+            >
+              إرسال الطلب
+            </Button>
+          </form>
+        ) : (
+          <div className="bg-blue-100 text-start border border-green-800 text-muted-foreground p-2 px-4 rounded-md  ">
+            <h2 className="text-md mb-2">تم إرسال الطلب بنجاح</h2>
+            <p className="text-sm">
+              شكراً لاهتمامك! سيتواصل فريقنا معك قريباً.
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-6 pt-20 px-10">
         <h1 className="text-2xl">معلومات الاتصال </h1>
-        <div className=" p-6 h-40 rounded-md shadow-sm border   flex flex-col justify-between">
+        <div className="p-6 h-40 rounded-md shadow-sm border flex flex-col justify-between">
           <h2 className="text-xl font-semibold text-foreground mb-2">
             العنوان
           </h2>
           <p>وزارة الأوقاف، دمشق، سوريا</p>
         </div>
 
-        <div className="p-6 h-40 rounded-md shadow-sm border   flex flex-col justify-between">
+        <div className="p-6 h-40 rounded-md shadow-sm border flex flex-col justify-between">
           <h2 className="text-xl font-semibold text-foreground mb-2">
             البريد الإلكتروني
           </h2>
@@ -158,7 +171,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className=" p-6 h-40 rounded-md shadow-sm border   flex flex-col justify-between">
+        <div className="p-6 h-40 rounded-md shadow-sm border flex flex-col justify-between">
           <h2 className="text-xl font-semibold text-foreground mb-2">
             ساعات العمل
           </h2>
