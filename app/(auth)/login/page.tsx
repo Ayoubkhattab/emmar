@@ -11,9 +11,9 @@ export default function LoginPage() {
 
   const demoUsers = [
     { role: "مدير", username: "admin", password: "admin123" },
-    { role: "لجنة", username: "committee", password: "committee123" },
-    { role: "شريك", username: "partner", password: "partner123" },
-    { role: "مستخدم", username: "user", password: "user123" },
+    // { role: "لجنة", username: "committee", password: "committee123" },
+    // { role: "شريك", username: "partner", password: "partner123" },
+    // { role: "مستخدم", username: "user", password: "user123" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,13 +32,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-[var(--background)] px-4">
-      <h1 className="text-3xl font-bold mb-4 text-gray-600">إعمار</h1>
+    <div className="min-h-screen flex flex-col pt-10 items-center bg-[var(--background)] px-4">
+      <h1 className="text-3xl font-bold mb-4   text-gray-600">إعمار</h1>
       <p className="mb-6 text-[var(--foreground)]">
         مبادرة إعمار المساجد السورية
       </p>
-      <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 text-right">
-        <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="max-w-md w-full border mb-4  bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 text-right">
+        <p className="mb-14 text-xl text-muted-foreground">تسجيل الدخول </p>
+        <form onSubmit={handleSubmit} className="space-y-6 mb-6 ">
           <label className="block">
             <span className="text-gray-700 dark:text-gray-300">
               اسم المستخدم
@@ -48,7 +49,6 @@ export default function LoginPage() {
               dir="ltr"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="أدخل اسم المستخدم"
               className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
               required
               autoComplete="username"
@@ -64,7 +64,6 @@ export default function LoginPage() {
               dir="ltr"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="أدخل كلمة المرور"
               className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
               required
               autoComplete="current-password"
@@ -75,21 +74,11 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-[var(--green-primary)] hover:bg-[#04372f] text-white font-semibold py-3 rounded-md transition-colors"
+            className="w-full bg-[var(--green-primary)] hover:bg-[#04372f] text-white font-semibold py-3 rounded-md transition-colors mt-2"
           >
             تسجيل الدخول
           </button>
         </form>
-
-        <div className="mt-8 text-sm text-gray-600 dark:text-gray-400">
-          <p className="mb-2 font-semibold">بيانات الدخول للتجربة:</p>
-          {demoUsers.map(({ role, username, password }) => (
-            <p key={username}>
-              <span className="font-semibold">{role}:</span> {username} /{" "}
-              {password}
-            </p>
-          ))}
-        </div>
       </div>
     </div>
   );

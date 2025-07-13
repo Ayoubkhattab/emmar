@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "@/components/navbar/navbarWrapper";
-import Footer from "@/components/footer/footer";
 import { ThemeProvider } from "next-themes";
+import FooterWrapper from "@/components/footer/footerWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <NavbarWrapper />
           {children}
-          <Footer />
+          <FooterWrapper />
         </ThemeProvider>
       </body>
     </html>
