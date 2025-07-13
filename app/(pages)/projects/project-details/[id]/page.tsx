@@ -5,15 +5,16 @@ import { notFound } from "next/navigation";
 import { mosques } from "@/lib/data";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // عدل المسار حسب مشروعك
 import { ProjectRequestSheet } from "@/components/projectRequest/projectRequestSheet";
+import { promises } from "dns";
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function ProjectDetails({ params }: Props) {
-  const mosque = mosques.find((m) => m.id === Number(params.id));
+  const mosque = mosques.find(async (m) => m.id === Number((await params).id));
   if (!mosque) return notFound();
 
   const fundingPercent = Math.round(
