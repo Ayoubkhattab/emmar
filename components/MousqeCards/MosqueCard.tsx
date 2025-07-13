@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mosque } from "@/lib/data";
+import { useRouter } from "next/navigation";
 
 export function MosqueCard({ mosques }: { mosques: Mosque[] }) {
+  const router = useRouter();
   return (
     <div className="flex flex-wrap justify-center gap-6 px-4">
       {mosques.map((mosque) => {
@@ -64,7 +66,12 @@ export function MosqueCard({ mosques }: { mosques: Mosque[] }) {
               </CardContent>
 
               <CardFooter className="mt-auto">
-                <Button className="w-full bg-[var(--gold-primary)] text-black text-lg">
+                <Button
+                  className="w-full bg-[var(--gold-primary)] text-black text-lg"
+                  onClick={() =>
+                    router.push(`/projects/project-details/${mosque.id}`)
+                  }
+                >
                   عرض التفاصيل
                 </Button>
               </CardFooter>

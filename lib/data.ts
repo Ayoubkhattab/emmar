@@ -19,7 +19,7 @@ export const mosques: Mosque[] = [
     city: "حمص",
     description: "هو مسجد أُسس في عهد الدولة العثمانية،...",
     image: "/assets/background.jpg",
-    currentFunding: 0,
+    currentFunding: 23000,
     totalFunding: 50000,
     status: "under_study",
     governorate: "homs",

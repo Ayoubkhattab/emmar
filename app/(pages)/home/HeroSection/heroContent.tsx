@@ -26,7 +26,7 @@ export default function HeroContent() {
                 className="bg-[var(--green-primary)] hover:bg-[#04372f] text-white px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                 type="button"
               >
-                {t("hero.viewProjects")}
+                <a href="/projects">{t("hero.viewProjects")}</a>
               </Button>
               <button
                 className="border-2 border-[var(--gold-primary)] text-[var(--foreground)] bg-[var(--background)]/65 px-8 py-2 text-lg rounded-lg transition-all duration-200"
