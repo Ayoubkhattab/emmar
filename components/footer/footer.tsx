@@ -17,7 +17,7 @@ export default function Footer() {
           <h3 className="text-xl font-semibold mb-4">روابط سريعة</h3>
           <ul className="space-y-2 ">
             <li>
-              <a href="#" className="hover:underline">
+              <a href="/projects" className="hover:underline">
                 استعراض المشاريع
               </a>
             </li>

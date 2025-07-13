@@ -56,8 +56,8 @@ export default function Navbar() {
             <button className="hidden md:inline text-[var(--foreground)] hover:text-green-primary transition-colors shadow p-2 rounded-lg border border-amber-200">
               <a href="/login"> {t("navbar.login", "تسجيل الدخول")}</a>
             </button>
-            <button className="hidden md:inline text-[var(--foreground)] hover:bg-[#988561] bg-[var(--gold-primary)] px-4 py-2 rounded-md transition">
-              {t("navbar.bePartner", "كن شريكاً")}
+            <button className="hidden md:inline text-[var(--foreground)] hover:bg-[var(--gold-primary)]/70 bg-[var(--gold-primary)] px-4 py-2 rounded-md transition">
+              <a href="/contact"> {t("navbar.bePartner", "كن شريكاً")}</a>
             </button>
 
             {/* Mobile menu button */}
@@ -97,8 +97,8 @@ export default function Navbar() {
           <button className="w-full text-[var(--foreground)] hover:text-green-primary py-2 border-t border-gray-300 mt-2">
             <a href="/login"> {t("navbar.login", "تسجيل الدخول")}</a>
           </button>
-          <button className="w-full bg-[var(--gold-primary)] hover:bg-[#988561] text-[var(--foreground)] py-2 rounded mt-2">
-            {t("navbar.bePartner", "كن شريكاً")}
+          <button className="w-full bg-[var(--gold-primary)] hover:bg-[var(--gold-primary)]/70 text-[var(--foreground)] py-2 rounded mt-2">
+            <a href="/contact"> {t("navbar.bePartner", "كن شريكاً")}</a>
           </button>
         </nav>
       )}
