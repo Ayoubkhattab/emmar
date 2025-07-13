@@ -37,7 +37,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="/contact" className="hover:underline">
                 تواصل معنا
               </a>
             </li>
