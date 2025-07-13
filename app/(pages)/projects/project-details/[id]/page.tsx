@@ -4,6 +4,7 @@ import { useState } from "react";
 import { notFound } from "next/navigation";
 import { mosques } from "@/lib/data";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // عدل المسار حسب مشروعك
+import { ProjectRequestSheet } from "@/components/projectRequest/projectRequestSheet";
 
 interface ProjectDetailsProps {
   params: { id: string };
@@ -209,9 +210,9 @@ export default function ProjectDetails({ params }: ProjectDetailsProps) {
               مع فريقنا.
             </p>
 
-            <button className="w-full bg-[var(--green-primary)] text-white py-2 rounded-md hover:opacity-90 transition ">
-              طلب دراسة المشروع
-            </button>
+            <ProjectRequestSheet
+              mosque={{ id: mosque.id, name: mosque.name }}
+            />
           </div>
         </aside>
       </div>
